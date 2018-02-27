@@ -18,5 +18,15 @@ app.get('/about', function(req, res) {
     res.render('pages/about');
 });
 
+// blog page 
+app.get('/blog', function(req, res) {
+    res.render('pages/blog');
+});
+
+// articles page 
+app.get('/articles', function(req, res) {
+    res.render('pages/articles');
+});
+
 app.listen(3001);
 console.log('3001 is the magic port');
