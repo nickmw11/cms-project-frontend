@@ -1,5 +1,4 @@
 // server.js
-// load the things we need
 var express = require('express');
 var app = express();
 
@@ -28,5 +27,10 @@ app.get('/articles', function(req, res) {
     res.render('pages/articles');
 });
 
+// contact us page 
+app.get('/contact', function(req, res) {
+    res.render('pages/contact');
+});
+
 app.listen(3001);
-console.log('3001 is the magic port');
+console.log('Listening on port 3001');
