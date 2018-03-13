@@ -32,5 +32,6 @@ app.get('/contact', function(req, res) {
     res.render('pages/contact');
 });
 
+// Enter localhost:3001 into your browser
 app.listen(3001);
 console.log('Listening on port 3001');
