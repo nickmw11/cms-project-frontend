@@ -32,13 +32,10 @@ app.get('/contact', function(req, res) {
     res.render('pages/contact');
 });
 
-<<<<<<< HEAD
 // temporary demo page 
 app.get('/demo', function(req, res) {
     res.render('pages/demo');
 });
 
-=======
->>>>>>> bacf622cfd726b195e4c7b393cac3024d5afa74a
 app.listen(3001);
 console.log('Listening on port 3001');
