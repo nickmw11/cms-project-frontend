@@ -32,9 +32,9 @@ app.get('/contact', function(req, res) {
     res.render('pages/contact');
 });
 
-// temporary demo page 
-app.get('/demo', function(req, res) {
-    res.render('pages/demo');
+// Sends a reply and the date/time object
+app.get('/date', function(req, res) {
+    res.send("<p>Reply to ajax call from server, updating once every second.</p>" + Date());
 });
 
 app.listen(3001);

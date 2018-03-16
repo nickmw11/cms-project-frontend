@@ -17,7 +17,6 @@
             <div class="jumbotron">
                 <h1>Homepage</h1>
                 <p>This is the main page</p>
-                <button type="button" onclick="loadDoc()">Send request</button>
                 <p id="demo"></p>
             </div>
         </div>
@@ -35,6 +34,12 @@
 </footer>
 
 <script>
+    // Recurring call to loadDoc() every seconds
+    $(document).ready(function() {
+        setInterval("loadDoc()",1000);
+    });
+
+    // call to node server
     function loadDoc() {
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
@@ -42,7 +47,7 @@
           document.getElementById("demo").innerHTML = this.responseText;
         }
       };
-      xhttp.open("GET", "/demo", true);
+      xhttp.open("GET", "/date", true);
       xhttp.send();
     }
 </script>
