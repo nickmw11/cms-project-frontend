@@ -15,27 +15,27 @@
     <div class="jumbotron">
         <h1>Contact Us</h1>
         <p>Submit your concerns and we will respond within 48 hours.</p>
-    </div>
+
     <!--Here begins the start of the Contact Us form-->
-    <form>
+    <form method="post" action="submitMessage">
       <fieldset><legend>Your Information</legend>
       <!--Below are the boxes for the users information; first and last name-->
       <div class="form-row">
         <div class="col-7">
           <label class="form-name-label" for="inlineFormInputName">Name</label>
-          <input type="text" class="form-control" placeholder="First Name">
+          <input type="text" name="firstname" class="form-control" placeholder="First Name">
         </div><br>
         <div class="col">
-          <input type="text" class="form-control" placeholder="Last Name">
+          <input type="text" name="lastname" class="form-control" placeholder="Last Name">
         </div><br>
         <!--Below is the box for Email-->
         <div class="col">
           <label class="form-name-label" for="inlineFormInputContact">Contact</label>
-          <input type="text" class="form-control" placeholder="Email">
+          <input type="text" name="email" class="form-control" placeholder="Email">
         </div><br>
         <!--Below is the box for phone number-->
         <div class="col">
-          <input type="text" class="form-control" placeholder="Phone Number, no parentheses or hyphens">
+          <input type="text" name="phone" class="form-control" placeholder="Phone Number, no parentheses or hyphens">
         </div><br>
       </div><br>
     </fieldset>
@@ -46,7 +46,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-default"><b>Subject</b></span>
         </div>
-        <input type="text" class="form-control" placeholder="Enter your message subject" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        <input type="text" name="subject" class="form-control" placeholder="Enter your message subject" aria-label="Default" aria-describedby="inputGroup-sizing-default">
       </div><br>
 
     <!--Below is the box for Message Body-->
@@ -54,12 +54,12 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><b>Message Body</b></span>
         </div>
-        <textarea class="form-control" placeholder="Type your message body here"aria-label="Default"></textarea>
+        <textarea name="messagebody" class="form-control" placeholder="Type your message body here"aria-label="Default"></textarea>
       </div><br>
     </fieldset>
       <button type="submit" class="btn btn-primary">Send</button><br>
     </form>
-    
+  </div>
 </main>
 
 <footer>
