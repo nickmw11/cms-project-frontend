@@ -2,6 +2,15 @@
 var express = require('express');
 var app = express();
 var bodyParser = require("body-parser");
+var mysql = require('mysql');
+
+// connection
+var mysqlConnect = mysql.createConnection({
+    host: "sql9.freesqldatabase.com",
+    user: "sql9229224",
+    password: "6m2d4QZdzj",
+    database: "sql9229224"
+  });
 
 // set up body parser
 app.use(bodyParser.urlencoded({extended:false}));
@@ -55,6 +64,12 @@ app.post('/submitMessage', function(req, res, next){
     // Replacing single quotes with 2 single quotes so that the sql won't have syntax errors
     subject = subject.replace(/'/g,"''");
     body = body.replace(/'/g,"''");
+
+    var query = "INSERT INTO contactus (firstname,lastname,email,phone,subjectofmessage,bodyofmessage) VALUES ('" + firstname+ "','" + lastname + "','" + email + "','" + phone + "','" + subject + "','" + body + "');";
+    mysqlConnect.query(query, function (err, result, fields) {
+        if (err) throw err;
+    console.log(result);
+});
 
     res.render('pages/thanks');
 });
