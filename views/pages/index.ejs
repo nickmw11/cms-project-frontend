@@ -17,7 +17,6 @@
             <div class="jumbotron">
                 <h1>Homepage</h1>
                 <p>This is the main page</p>
-                <p id="demo"></p>
             </div>
         </div>
         <div class="col-sm-4">        
@@ -32,24 +31,5 @@
 <footer>
     <% include ../partials/footer %>
 </footer>
-
-<script>
-    // Recurring call to loadDoc() every seconds
-    $(document).ready(function() {
-        setInterval("loadDoc()",1000);
-    });
-
-    // call to node server
-    function loadDoc() {
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("demo").innerHTML = this.responseText;
-        }
-      };
-      xhttp.open("GET", "/date", true);
-      xhttp.send();
-    }
-</script>
 </body>
 </html>

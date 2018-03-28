@@ -47,8 +47,14 @@ app.get('/contact', function(req, res) {
 });
 
 // Sends a reply and the date/time object
-app.get('/date', function(req, res) {
-    res.send("<p>Reply to ajax call from server, updating once every second.</p>" + Date());
+app.get('/article', function(req, res) {
+    var query = "Select * from Articles"
+    var resultString;
+    mysqlConnect.query(query, function (err, result, fields) {
+        if (err) throw err;
+        resultString = "<h2>" + result[0].Title + "</h2><h3>" + result[0].Author + "</h3>";
+        res.send(resultString);
+    });
 });
 
 app.post('/submitMessage', function(req, res, next){
