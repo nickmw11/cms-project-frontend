@@ -49,13 +49,12 @@ app.get('/contact', function(req, res) {
 // Sends a reply and the date/time object
 app.get('/article', function(req, res) {
     var query = "Select * from Articles"
-    var resultString;
+    var resultString = "";
 
     mysqlConnect.query(query, function (err, result, fields) {
         if (err) throw err;
 
-        /* This now pulls all info from the articles table and has the start of formatting.  It's a kind of messy way of doing it and still needs some work.
-          Also, "undefined" shows up at the top of the page and I haven't taken a look at that yet. -Nick */
+        /* This now pulls all info from the articles table and has the start of formatting.  It's a kind of messy way of doing it and still needs some work. -Nick */
 
         numRows = result.length;
         var articleArray = [];
@@ -83,8 +82,7 @@ app.post('/submitMessage', function(req, res, next){
     var query = "INSERT INTO contactus (firstname,lastname,email,phone,subjectofmessage,bodyofmessage) VALUES ('" + firstname+ "','" + lastname + "','" + email + "','" + phone + "','" + subject + "','" + body + "');";
     mysqlConnect.query(query, function (err, result, fields) {
         if (err) throw err;
-    console.log(result);
-});
+    });
 
     res.render('pages/thanks');
 });
