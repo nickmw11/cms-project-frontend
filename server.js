@@ -21,27 +21,27 @@ app.set('view engine', 'ejs');
 
 // use res.render to load up an ejs view file
 
-// index page 
+// index page
 app.get('/', function(req, res) {
     res.render('pages/index');
 });
 
-// about page 
+// about page
 app.get('/about', function(req, res) {
     res.render('pages/about');
 });
 
-// blog page 
+// blog page
 app.get('/blog', function(req, res) {
     res.render('pages/blog');
 });
 
-// articles page 
+// articles page
 app.get('/articles', function(req, res) {
     res.render('pages/articles');
 });
 
-// contact us page 
+// contact us page
 app.get('/contact', function(req, res) {
     res.render('pages/contact');
 });
@@ -50,9 +50,18 @@ app.get('/contact', function(req, res) {
 app.get('/article', function(req, res) {
     var query = "Select * from Articles"
     var resultString;
+
     mysqlConnect.query(query, function (err, result, fields) {
         if (err) throw err;
-        resultString = "<h2>" + result[0].Title + "</h2><h3>" + result[0].Author + "</h3>";
+
+        /* This now pulls all info from the articles table and has the start of formatting.  It's a kind of messy way of doing it and still needs some work.
+          Also, "undefined" shows up at the top of the page and I haven't taken a look at that yet. -Nick */
+
+        numRows = result.length;
+        var articleArray = [];
+        for (i = 0; i < numRows; i++) {
+        resultString = resultString + "<h2>" + result[i].Title + "</h2><h3>" + "Author: " + result[i].Author + numRows + "</h3>" + '<p>' + result[i].Content + '</p>' + result[i].Date + '<br>';
+      }
         res.send(resultString);
     });
 });
