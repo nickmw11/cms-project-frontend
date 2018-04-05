@@ -5,13 +5,9 @@ var bodyParser = require("body-parser");
 var mysql = require('mysql');
 var path = require('path');
 
-// connection
-var mysqlConnect = mysql.createConnection({
-    host: "sql9.freesqldatabase.com",
-    user: "sql9229224",
-    password: "6m2d4QZdzj",
-    database: "sql9229224"
-  });
+// mysql connection
+var configDB = require('./config/database.js');
+var mysqlConnect = mysql.createConnection(configDB.url);
 
 // set up body parser
 app.use(bodyParser.urlencoded({extended:false}));
