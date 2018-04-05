@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require("body-parser");
 var mysql = require('mysql');
+var path = require('path');
 
 // connection
 var mysqlConnect = mysql.createConnection({
@@ -15,6 +16,7 @@ var mysqlConnect = mysql.createConnection({
 // set up body parser
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -58,8 +60,8 @@ app.get('/article', function(req, res) {
 
         numRows = result.length;
         var articleArray = [];
-        for (i = 0; i < numRows; i++) {
-        resultString = resultString + "<h2>" + result[i].Title + "</h2><h3>" + "Author: " + result[i].Author + numRows + "</h3>" + '<p>' + result[i].Content + '</p>' + result[i].Date + '<br>';
+        for (i = numRows - 1; i >= 0; i--) {
+        resultString = resultString + "<h2>" + result[i].Title + "</h2><h3>" + "Author: " + result[i].Author + "</h3>" + '<p>' + result[i].Content + '</p>' + result[i].Date + '<br>';
       }
         res.send(resultString);
     });
