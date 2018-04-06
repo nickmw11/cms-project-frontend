@@ -1,6 +1,7 @@
 // Calls the function loadArticles
 $(document).ready(function() {
     loadArticles();
+    setInterval("loadArticles()",3000);
 });
 
 // call to node server
