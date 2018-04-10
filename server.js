@@ -44,6 +44,11 @@ app.get('/contact', function(req, res) {
     res.render('pages/contact');
 });
 
+// job postings page
+app.get('/jobpostings', function(req, res) {
+    res.render('pages/jobpostings');
+});
+
 // Sends a reply and the date/time object
 app.get('/article', function(req, res) {
     var query = "Select * from Articles"
@@ -58,6 +63,25 @@ app.get('/article', function(req, res) {
         var articleArray = [];
         for (i = numRows - 1; i >= 0; i--) {
         resultString = resultString + "<div class=\"container\"> <div class=\"row\"> <div class=\"col-sm-4\"><h2>" + result[i].Title + "</h2><h3>" + "Author: " + result[i].Author + "</h3>" + '<p>' + result[i].Content + '</p>' + result[i].Date + '</div><div class="col-sm-4"><img src="test.png" width="175" height="175"></div></div></div><br><br>';
+      }
+        res.send(resultString);
+    });
+});
+
+//Sends a reply and the job posting
+app.get('/jobpostingsubmit', function(req, res) {
+    var query = "Select * from jobpostings"
+    var resultString = "";
+
+    mysqlConnect.query(query, function (err, result, fields) {
+        if (err) throw err;
+
+        /* This now pulls all info from the articles table and has the start of formatting.  It's a kind of messy way of doing it and still needs some work. -Nick */
+
+        numRows = result.length;
+        var jobpostingsArray = [];
+        for (i = numRows - 1; i >= 0; i--) {
+        resultString = resultString + "<h2>" + result[i].Title + "</h2><h3>" + "Description: " + result[i].Description + "</h3>" + '<p>' + "Requirements: " + result[i].Require + '</p>' + '<br>';
       }
         res.send(resultString);
     });
