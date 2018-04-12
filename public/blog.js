@@ -12,7 +12,7 @@ function loadBlog() {
         document.getElementById("blog").innerHTML = this.responseText;
     }
     };
-    xhttp.open("GET", "/blog", true);
+    xhttp.open("GET", "/blog/displayBlog", true);
     xhttp.send();
 }
 
