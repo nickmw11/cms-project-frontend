@@ -6,13 +6,18 @@ var mysql = require('mysql');
 var path = require('path');
 
 // mysql connection
-var configDB = require('./config/database.js');
-var mysqlConnect = mysql.createConnection(configDB.url);
+var mysqlConnect = require('./config/database.js');
 
 // set up body parser
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// requiring routes
+var blog = require('./routes/blogRoute');
+
+// using routes
+app.use('/blog', blog);
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -30,9 +35,9 @@ app.get('/about', function(req, res) {
 });
 
 // blog page
-app.get('/blog', function(req, res) {
-    res.render('pages/blog');
-});
+// app.get('/blog', function(req, res) {
+//     res.render('pages/blog');
+// });
 
 // articles page
 app.get('/articles', function(req, res) {
