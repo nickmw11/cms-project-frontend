@@ -15,9 +15,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // requiring routes
 var blog = require('./routes/blogRoute');
+var about = require('./routes/aboutRoute');
 
 // using routes
 app.use('/blog', blog);
+app.use('/about', about);
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -30,9 +32,9 @@ app.get('/', function(req, res) {
 });
 
 // about page
-app.get('/about', function(req, res) {
-    res.render('pages/about');
-});
+//app.get('/about', function(req, res) {
+//    res.render('pages/about');
+//});
 
 // blog page
 // app.get('/blog', function(req, res) {
