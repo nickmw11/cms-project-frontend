@@ -3,6 +3,8 @@
  * It formats them, putting them into resultString, and then sends resultString as the response.
  */
 
+var mysqlConnect = require('../config/database.js');
+
 exports.displayAbout = function(req, res){
     var query = "Select * from About"
     var resultString = "";
