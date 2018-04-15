@@ -1,3 +1,8 @@
+/* Filename: blogController.js
+ * Description: This file creates a query selecting all blogs from the Blog table in the database.
+ * It formats them, putting them into resultString, and then sends resultString as the response.
+ */
+
 var mysqlConnect = require('../config/database.js');
 
 exports.displayBlog = function(req, res){

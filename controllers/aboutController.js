@@ -1,4 +1,7 @@
-var mysqlConnect = require('../config/database.js');
+/* Filename: aboutController.js
+ * Description: This file creates a query selecting all objects from the about table in the database.
+ * It formats them, putting them into resultString, and then sends resultString as the response.
+ */
 
 exports.displayAbout = function(req, res){
     var query = "Select * from About"

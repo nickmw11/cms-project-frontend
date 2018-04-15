@@ -1,10 +1,18 @@
-// Calls the function loadArticles
+/* Filename: articles.js
+ * Description: This file updates the articles page every 3 seconds, displaying all the articles in the database.
+ */
+
+/* This function includes an initial call to loadArticles, and then
+ * calls it every 3 seconds
+ */
 $(document).ready(function() {
     loadArticles();
     setInterval("loadArticles()",3000);
 });
 
-// call to node server
+/* This function creates the xhttp request "/articles/displayArticles" and sends it to the server.
+ * The response text is put into a div with id="articles"
+ */
 function loadArticles() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -12,6 +20,6 @@ function loadArticles() {
         document.getElementById("articles").innerHTML = this.responseText;
     }
     };
-    xhttp.open("GET", "/article", true);
+    xhttp.open("GET", "/articles/displayArticles", true);
     xhttp.send();
 }
