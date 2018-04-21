@@ -30,7 +30,9 @@ exports.displayArticles = function (req, res){
                   res.pipe(file);
               });
               }
-              downloadFile();
+              // To turn on file transfer from back end to front end, uncomment below line
+              // downloadFile();
+
                 if(result[i].is_active == 1)
                 {
                   console.log(result[i].Image);
