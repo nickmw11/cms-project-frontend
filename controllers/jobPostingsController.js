@@ -15,7 +15,10 @@ exports.displayJobPostings = function(req, res){
         numRows = result.length;
         var jobpostingsArray = [];
         for (i = numRows - 1; i >= 0; i--) {
-            resultString = resultString + "<h2>" + result[i].Title + "</h2><h3>" + "Description: " + result[i].Description + "</h3>" + '<p>' + "Requirements: " + result[i].Require + '</p>' + '<br>';
+            if(result[i].is_active == 1)
+            {
+                resultString = resultString + "<h2>" + result[i].Title + "</h2><h3>" + "Description: " + result[i].Description + "</h3>" + '<p>' + "Requirements: " + result[i].Requirements + '</p>' + '<br>';
+            }
         }
         res.send(resultString);
     });

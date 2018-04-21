@@ -7,7 +7,7 @@
  */
 $(document).ready(function() {
     loadArticles();
-    setInterval("loadArticles()",500000);
+    setInterval("loadArticles()",3000);
 });
 
 /* This function creates the xhttp request "/articles/displayArticles" and sends it to the server.

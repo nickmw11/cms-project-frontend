@@ -7,6 +7,7 @@
  */
 $(document).ready(function() {
     loadJobPostings();
+    setInterval("loadJobPostings()",3000);
 });
 
 /* This function creates the xhttp request "/jobPostings/submitJobPosting" and sends it to the server.
