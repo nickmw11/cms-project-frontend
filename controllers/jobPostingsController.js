@@ -17,7 +17,7 @@ exports.displayJobPostings = function(req, res){
         for (i = numRows - 1; i >= 0; i--) {
             if(result[i].is_active == 1)
             {
-                resultString = resultString + "<h2>" + result[i].Title + "</h2><h3>" + "Description: " + result[i].Description + "</h3>" + '<p>' + "Requirements: " + result[i].Requirements + '</p>' + '<br>';
+                resultString = resultString + "<h2>" + result[i].title + "</h2><h3>" + "Description: " + result[i].description + "</h3>" + '<p>' + "Requirements: " + result[i].requirements + '</p>' + '<br>';
             }
         }
         res.send(resultString);
