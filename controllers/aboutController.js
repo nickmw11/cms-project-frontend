@@ -6,7 +6,7 @@
 var mysqlConnect = require('../config/database.js');
 
 exports.displayAbout = function(req, res){
-    var query = "Select * from About"
+    var query = "Select * from about"
     var resultString = "";
 
     mysqlConnect.query(query, function (err, result, fields) {

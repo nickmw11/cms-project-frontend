@@ -9,7 +9,7 @@ var fs = require('fs');
 var http = require('http');
 
 exports.displayArticles = function (req, res){
-        var query = "Select * from Articles"
+        var query = "Select * from articles"
         var resultString = "";
 
         mysqlConnect.query(query, function (err, result, fields) {
