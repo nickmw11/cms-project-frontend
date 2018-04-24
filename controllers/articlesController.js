@@ -18,27 +18,27 @@ const { URL } = require('url');
               }
 
 exports.displayArticles = function (req, res){
-        var query = "Select * from articles"
-        var resultString = "";
+    var query = "Select * from articles"
+    var articleArray = [];
 
-        mysqlConnect.query(query, function (err, result, fields) {
-            if (err) throw err;
+    mysqlConnect.query(query, function (err, result, fields) {
+        if (err) throw err;
+        numRows = result.length;
 
+        for (i = numRows - 1; i >= 0; i--) {
 
-            numRows = result.length;
-            var articleArray = [];
-            for (i = numRows - 1; i >= 0; i--) {
-
-                if(result[i].is_active == 1)
+            if(result[i].is_active == 1)
+            {
+                if (!fs.existsSync('./public/' + result[i].Image))
                 {
-                    if (!fs.existsSync('./public/' + result[i].Image))
-                    {
-                      downloadFile(result[i].Image);
-                      console.log("Downloading " + result[i].Image);
-                    }
-                    resultString = resultString + "<div class=\"container\"> <div class=\"row\"> <div class=\"col-sm-8\"><h2>" + result[i].Title + "</h2><h3>" + "Author: " + result[i].Author + "</h3>" + '<p>' + result[i].Content + '</p>' + result[i].Date + '</div><div class="col-sm-4"><img src="' + result[i].Image + '" width="175" height="175"></div></div></div><br><br>';
+                    downloadFile(result[i].Image);
+                    console.log("Downloading " + result[i].Image);
                 }
+                articleArray.push({ title: result[i].title, author: result[i].author, content: result[i].content, date: result[i].date, image: result[i].image });
             }
-        res.send(resultString);
+        }
+        res.render('displays/articleDisplay', {
+            articleArray: articleArray
+        });
     });
 }
