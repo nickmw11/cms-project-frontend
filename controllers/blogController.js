@@ -1,13 +1,12 @@
 /* Filename: blogController.js
  * Description: This file creates a query selecting all blogs from the Blog table in the database.
- * It formats them, putting them into resultString, and then sends resultString as the response.
+ * It formats them, putting them into object blogArray, and then renders the blogDisplay page.
  */
 
 var mysqlConnect = require('../config/database.js');
 
 exports.displayBlog = function(req, res){
     var query = "Select * from blog"
-    var resultString = "";
 
     mysqlConnect.query(query, function (err, result, fields) {
         if (err) throw err;
@@ -19,9 +18,11 @@ exports.displayBlog = function(req, res){
         for (i = numRows - 1; i >= 0; i--) {
             if(result[i].is_active == 1)
             {
-                resultString = resultString + "<div class=\"container\"> <div class=\"row\"> <div class=\"col-sm-8\"><h2>" + result[i].title + "</h2><h3>" + "Author: " + result[i].author + "</h3>" + '<p>' + result[i].content + '</p>' + result[i].date + '</div><div class="col-sm-4"><img src="test.png" width="175" height="175"></div></div></div><br><br>';
+                blogArray.push({ title: result[i].title, author: result[i].author, content: result[i].content, date: result[i].date });
             }
         }
-            res.send(resultString);
+        res.render('displays/blogDisplay', {
+            blogArray: blogArray
+        });
     });
 };
