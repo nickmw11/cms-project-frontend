@@ -2,20 +2,17 @@
      Description: File containing repeatable form for individual blogs.
      It loops through all blogs in blogArray and displays all the data
      from the table on the blog.ejs page. -->
+
 <% blogArray.forEach(function(blog){ %>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8">
+    <div class="row">
+        <div class="col-xs-9">
             <h2>Title: <%= blog.title %></h2>
             <h3>Author: <%= blog.author %></h3>
             <p><%= blog.content %></p>
             <p><%= blog.date %></p>
-            </div>
-            <div class="col-sm-4">
-                    <img src="test.png" width="175" height="175">
-            </div>
+        </div>
+        <div class="col-xs-3">
+            <img src="noimage.png" width="175" height="175">
         </div>
     </div>
 <% }) %>
-
-<br><br>

@@ -1,0 +1,11 @@
+<!-- Filename: jobDisplay.ejs
+     Description: File containing repeatable form for individual jobs.
+     It loops through all jobs in jobPostingsArray and displays all the data
+     from the table on the jobPostings.ejs page. -->
+
+<% jobPostingsArray.forEach(function(job){ %>
+    <h2>Title: <%= job.title %></h2>
+    <h3>Description: <%= job.description %></h3>
+    <p>Requirements: <%= job.requirements %></p>
+    <br>
+<% }) %>

@@ -3,19 +3,19 @@
      It loops through all blogs in blogArray and displays all the data
      from the table on the blog.ejs page. -->
      <% articleArray.forEach(function(article){ %>
-        <div class="container">
+   
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-9">
                 <h2>Title: <%= article.title %></h2>
                 <h3>Author: <%= article.author %></h3>
                 <p><%= article.content %></p>
                 <p><%= article.date %></p>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                         <img src=<%= article.image %> width="175" height="175">
                 </div>
             </div>
-        </div>
+
     <% }) %>
     
     <br><br>

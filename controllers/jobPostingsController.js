@@ -7,19 +7,20 @@ var mysqlConnect = require('../config/database.js');
 
 exports.displayJobPostings = function(req, res){
     var query = "Select * from jobpostings"
-    var resultString = "";
+    var jobPostingsArray = [];
 
     mysqlConnect.query(query, function (err, result, fields) {
         if (err) throw err;
 
         numRows = result.length;
-        var jobpostingsArray = [];
         for (i = numRows - 1; i >= 0; i--) {
             if(result[i].is_active == 1)
             {
-                resultString = resultString + "<h2>" + result[i].title + "</h2><h3>" + "Description: " + result[i].description + "</h3>" + '<p>' + "Requirements: " + result[i].requirements + '</p>' + '<br>';
+                jobPostingsArray.push({ title: result[i].title, description: result[i].description, requirements: result[i].requirements });
             }
         }
-        res.send(resultString);
+        res.render('displays/jobDisplay', {
+            jobPostingsArray: jobPostingsArray
+        });
     });
 };
