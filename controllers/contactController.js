@@ -15,10 +15,12 @@ exports.submitMessage = function(req, res){
     var body = req.body.messagebody;
 
     // Replacing single quotes with 2 single quotes so that the sql won't have syntax errors
+    firstname = subject.replace(/'/g,"''");
+    lastname = subject.replace(/'/g,"''");
     subject = subject.replace(/'/g,"''");
     body = body.replace(/'/g,"''");
 
-    var query = "INSERT INTO contactus (firstname,lastname,email,phone,subjectofmessage,bodyofmessage) VALUES ('" + firstname+ "','" + lastname + "','" + email + "','" + phone + "','" + subject + "','" + body + "');";
+    var query = "INSERT INTO contactus (first_name,last_name,email,phone,subject_of_message,body_of_message) VALUES ('" + firstname+ "','" + lastname + "','" + email + "','" + phone + "','" + subject + "','" + body + "');";
     mysqlConnect.query(query, function (err, result, fields) {
         if (err) throw err;
     });
