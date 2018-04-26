@@ -7,17 +7,21 @@ var mysqlConnect = require('../config/database.js');
 
 exports.displayAbout = function(req, res){
     var query = "Select * from about"
-    var resultString = "";
+    var aboutArray = [];
 
     mysqlConnect.query(query, function (err, result, fields) {
-            if (err) throw err;
+        if (err) throw err;
 
-            // Pulls from about table on the database
-            numRows = result.length;
-            var aboutArray = [];
-            for (i = numRows - 1; i >= 0; i--) {
-                resultString = resultString + "<div class=\"container\"> <div class=\"row\"> <div class=\"col-sm-8\"><h2>" + result[i].ID + "</h2>" + result[i].Image + "<h3>" + result[i].Name + "</h3>" + '<p>' + result[i].Bio + '</p>' + '</div><div class="col-sm-4"><img src="test.png" width="175" height="175"></div></div></div><br><br>';
+        // Pulls from about table on the database
+        numRows = result.length;
+
+        for (i = numRows - 1; i >= 0; i--) {
+            if(result[i].is_active == 1) {
+                aboutArray.push({ name: result[i].staff_name, bio: result[i].staff_bio, image: result[i].staff_image });
+            }
         }
-            res.send(resultString);
+        res.render('displays/aboutDisplay', {
+            aboutArray: aboutArray
         });
+    });
 };

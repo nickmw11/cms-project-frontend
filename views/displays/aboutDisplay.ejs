@@ -1,0 +1,10 @@
+<!-- Filename: aboutDisplay.ejs
+     Description: File containing repeatable form for individual jobs.
+     It loops through all jobs in jobPostingsArray and displays all the data
+     from the table on the jobPostings.ejs page. -->
+
+<% aboutArray.forEach(function(about){ %>
+    <h2>Name: <%= about.name %></h2>
+    <p>Bio: <%= about.bio %></p>
+    <br>
+<% }) %>

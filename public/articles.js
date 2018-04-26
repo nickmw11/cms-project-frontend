@@ -11,13 +11,13 @@ $(document).ready(function() {
 });
 
 /* This function creates the xhttp request "/articles/displayArticles" and sends it to the server.
- * The response text is put into a div with id="articles"
+ * The response text is put into a div with id="articleDisplay"
  */
 function loadArticles() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("articles").innerHTML = this.responseText;
+        document.getElementById("articleDisplay").innerHTML = this.responseText;
     }
     };
     xhttp.open("GET", "/articles/displayArticles", true);
