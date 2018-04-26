@@ -17,7 +17,7 @@ exports.displayAbout = function(req, res){
 
         for (i = numRows - 1; i >= 0; i--) {
             if(result[i].is_active == 1) {
-                aboutArray.push({ name: result[i].staff_name, bio: result[i].staff_bio, image: result[i].staff_image });
+                aboutArray.push({ name: result[i].name, bio: result[i].bio, image: result[i].image });
             }
         }
         res.render('displays/aboutDisplay', {
