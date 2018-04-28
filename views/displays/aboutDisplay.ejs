@@ -4,7 +4,11 @@
      from the table on the jobPostings.ejs page. -->
 
 <% aboutArray.forEach(function(about){ %>
-    <h2>Name: <%= about.name %></h2>
-    <p>Bio: <%= about.bio %></p>
-    <br>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Name: <%= about.name %></h2>
+            <p>Bio: <%= about.bio %></p>
+        </div>
+    </div>
+    <br />
 <% }) %>

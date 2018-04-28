@@ -5,14 +5,12 @@
 
 <% blogArray.forEach(function(blog){ %>
     <div class="row">
-        <div class="col-xs-9">
+        <div class="col-xs-12">
             <h2>Title: <%= blog.title %></h2>
             <h3>Author: <%= blog.author %></h3>
             <p><%= blog.content %></p>
             <p><%= blog.date %></p>
         </div>
-        <div class="col-xs-3">
-            <img src="noimage.png" width="175" height="175">
-        </div>
     </div>
+    <br />
 <% }) %>
