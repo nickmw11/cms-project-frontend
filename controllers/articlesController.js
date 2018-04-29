@@ -26,13 +26,13 @@ exports.displayArticles = function (req, res){
         numRows = result.length;
 
         for (i = numRows - 1; i >= 0; i--) {
-
+            console.log(result[i].image);
             if(result[i].is_active == 1)
             {
-                if (!fs.existsSync('./public/' + result[i].Image))
+                if (!fs.existsSync('./public/' + result[i].image))
                 {
-                    downloadFile(result[i].Image);
-                    console.log("Downloading " + result[i].Image);
+                    downloadFile(result[i].image);
+                    console.log("Downloading " + result[i].image);
                 }
                 articleArray.push({ title: result[i].title, author: result[i].author, content: result[i].content, date: result[i].date, image: result[i].image });
             }
